@@ -1,0 +1,116 @@
+/* AZ Centre homepage — builds on the tokens in style.css */
+
+/* Hero */
+.azc-hero{position:relative;overflow:hidden;padding:clamp(48px,6vw,88px) 0 0;background:var(--cream)}
+.azc-hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(32px,5vw,72px);align-items:center}
+.azc-hero h1{margin:0;max-width:13ch;font-size:clamp(42px,5.4vw,76px)}
+.azc-lede{max-width:48ch;margin:28px 0 0;color:var(--text);font-size:clamp(17px,1.4vw,19px);line-height:1.7}
+.azc-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.azc-trust{display:flex;flex-wrap:wrap;gap:10px 26px;margin:36px 0 0;padding:0;list-style:none;color:var(--ink);font-size:15px;font-weight:500}
+.azc-trust li{display:inline-flex;align-items:center;gap:8px}
+.azc-trust .azr-icon{width:20px;height:20px;padding:3px;border-radius:50%;background:var(--rust);color:#fff;stroke-width:2.5}
+
+.azc-visual{position:relative;display:grid;place-items:center;aspect-ratio:1/0.92}
+.azc-visual::before{content:"";position:absolute;inset:6% 0 4% 6%;border-radius:46% 54% 58% 42%/48% 44% 56% 52%;background:var(--blush);transform:rotate(-12deg);animation:azc-settle 1.4s var(--ease) both}
+.azc-visual::after{content:"";position:absolute;inset:0 4% 10% 2%;border-radius:50%;border:1px dashed rgba(173,77,52,.28);transform:rotate(8deg);pointer-events:none}
+.azc-visual img{position:relative;z-index:1;width:100%;height:auto;animation:azc-rise 1.2s .1s var(--ease) both}
+@keyframes azc-settle{from{transform:rotate(-20deg) scale(.94)}to{transform:rotate(-12deg) scale(1)}}
+@keyframes azc-rise{from{transform:translateY(18px)}to{transform:none}}
+
+.azc-hero-facts{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:clamp(40px,5vw,72px) 0 0;padding:0;border-top:1px solid var(--line)}
+.azc-hero-facts>div{padding:22px 24px 26px 0}
+.azc-hero-facts>div+div{padding-left:24px;border-left:1px solid var(--line)}
+.azc-hero-facts dt{display:flex;align-items:center;gap:8px;margin-bottom:4px;color:var(--text);font-size:14px}
+.azc-hero-facts dt .azr-icon{width:16px;height:16px;color:var(--rust)}
+.azc-hero-facts dd{margin:0;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+.azc-hero-facts a{color:var(--ink);text-decoration:none}
+.azc-hero-facts a:hover{color:var(--dark);text-decoration:underline}
+
+/* Shared section rhythm */
+.azc-section{padding:clamp(72px,9vw,128px) 0}
+.azc-section h2{margin:0}
+
+/* Services */
+.azc-services-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(40px,7vw,104px);align-items:start}
+.azc-services-intro{position:sticky;top:120px}
+.azc-services-intro p{margin:20px 0 32px;max-width:38ch;color:var(--text);font-size:18px}
+.azc-services .azr-service-list{border-top-color:var(--ink)}
+
+/* About */
+.azc-about{background:var(--sand)}
+.azc-about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,7vw,104px);align-items:center}
+.azc-about-figure{margin:0;padding:clamp(20px,3vw,36px);border-radius:var(--r-lg);background:#fff;box-shadow:var(--shadow);transform:rotate(-1.5deg)}
+.azc-about-figure img{display:block;width:100%;height:auto}
+.azc-about-copy>p{margin:20px 0 0;max-width:50ch;color:var(--text);font-size:18px}
+.azc-about-copy>h2+p{margin-top:24px}
+.azc-values{display:grid;gap:0;margin:36px 0 0;padding:0;list-style:none;border-top:1px solid #e3d2c8}
+.azc-values li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:16px;align-items:start;padding:18px 0;border-bottom:1px solid #e3d2c8;color:var(--text);font-size:16px}
+.azc-values h3{margin:0 0 2px;color:var(--ink);font:500 21px/1.25 var(--serif)}
+.azc-values p{margin:0}
+.azc-value-mark{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#fff;color:var(--rust)}
+.azc-value-mark .azr-icon{width:18px;height:18px;stroke-width:2.25}
+
+/* Approach */
+.azc-approach-head{display:flex;justify-content:space-between;align-items:end;gap:24px 48px;flex-wrap:wrap;margin-bottom:clamp(40px,5vw,64px)}
+.azc-approach-head p{margin:0;max-width:34ch;color:var(--text);font-size:18px}
+.azc-steps{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,4vw,56px);margin:0;padding:0;list-style:none}
+.azc-steps::before{content:"";position:absolute;left:0;right:0;top:36px;height:1px;background:linear-gradient(90deg,var(--rust),var(--line) 70%)}
+.azc-step{position:relative}
+.azc-step-num{position:relative;display:grid;place-items:center;width:72px;height:72px;margin-bottom:28px;border-radius:50%;background:#fff;border:1px solid var(--line);color:var(--rust);font:400 38px/1 var(--serif);font-variant-numeric:lining-nums}
+.azc-step:first-child .azc-step-num{background:var(--rust);border-color:var(--rust);color:#fff}
+.azc-step h3{margin:0 0 10px}
+.azc-step p{margin:0;max-width:32ch;color:var(--text)}
+
+/* Responsive */
+@media (max-width:1080px){
+  .azc-services-intro{position:static}
+}
+@media (max-width:860px){
+  .azc-hero-grid,.azc-services-grid,.azc-about-grid{grid-template-columns:1fr}
+  .azc-hero h1{max-width:16ch}
+  .azc-visual{max-width:520px;margin-inline:auto;width:100%}
+  .azc-about-figure{max-width:560px}
+  .azc-steps{grid-template-columns:1fr;gap:36px}
+  .azc-steps::before{left:36px;right:auto;top:0;bottom:0;width:1px;height:auto;background:linear-gradient(180deg,var(--rust),var(--line) 60%,rgba(233,220,211,0))}
+  .azc-step{display:grid;grid-template-columns:72px minmax(0,1fr);column-gap:24px}
+  .azc-step-num{grid-row:span 2;margin:0}
+  .azc-step h3{align-self:end;margin-top:8px}
+}
+@media (max-width:600px){
+  .azc-hero h1{font-size:clamp(38px,10.5vw,48px)}
+  .azc-actions .azr-button{flex:1 1 100%}
+  .azc-trust{gap:10px 18px;font-size:14px}
+  .azc-hero-facts{grid-template-columns:1fr}
+  .azc-hero-facts>div,.azc-hero-facts>div+div{padding:16px 0;border-left:0}
+  .azc-hero-facts>div+div{border-top:1px solid var(--line)}
+  .azc-step{grid-template-columns:56px minmax(0,1fr);column-gap:18px}
+  .azc-step-num{width:56px;height:56px;font-size:30px}
+  .azc-steps::before{left:28px}
+  .azc-about-figure{transform:none}
+}
+
+
+/* v4.0: four "How we work" steps, "Who we help" and "Guides" */
+@media (min-width:861px){.azc-steps-4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.azc-who{background:var(--cream)}
+.azc-who h2{margin:0 0 clamp(28px,4vw,44px)}
+.azc-audiences{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:0;padding:0;list-style:none}
+.azc-audiences a{position:relative;display:block;height:100%;padding:24px 24px 56px;border:1px solid var(--line);border-radius:var(--r-md);background:#fff;color:var(--text);text-decoration:none;transition:border-color .2s var(--ease),transform .2s var(--ease)}
+.azc-audiences a:hover{border-color:var(--rust);transform:translateY(-2px)}
+.azc-audiences h3{margin:0 0 8px}
+.azc-audiences p{margin:0;font-size:16px}
+.azc-audience-go{position:absolute;left:24px;bottom:20px;color:var(--rust)}
+.azc-audience-go .azr-icon{width:20px;height:20px}
+.azc-about-more{margin:28px 0 0}
+.azc-guides{padding-top:0}
+.azc-guides-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:0;padding:0;list-style:none}
+.azc-guides-list a{display:grid;gap:10px;height:100%;padding:22px 24px;border-top:2px solid var(--rust);background:var(--sand);border-radius:0 0 var(--r-md) var(--r-md);color:var(--ink);text-decoration:none}
+.azc-guides-list a:hover h3{color:var(--dark)}
+.azc-guides-list h3{margin:0;font-size:21px}
+.azc-guides-list span{color:var(--text);font-size:14px}
+@media (prefers-reduced-motion:reduce){.azc-audiences a{transition:none}}
+
+/* v4.1 */
+.azc-faq-wrap{max-width:820px}
+.azc-faq-note{margin-top:20px;font-size:14px;color:var(--text)}
+.azc-actions{flex-wrap:wrap}

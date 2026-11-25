@@ -1,0 +1,71 @@
+# AZ Centre Pte Ltd
+
+> AZ Centre Pte Ltd (UEN 201803025C) is a Singapore accounting and corporate services firm. It provides accounting and bookkeeping, corporate tax, corporate secretarial, company incorporation and payroll services to Singapore SMEs, start-ups, entrepreneurs and foreign-owned Singapore companies.
+
+This file is published by AZ Centre Pte Ltd on its official website, https://azcentre.com.sg/. It summarises the company and points to the pages that describe its services. The linked pages are the authoritative source.
+
+## Company overview
+
+- Legal name: AZ Centre Pte Ltd
+- UEN: 201803025C
+- Official website: https://azcentre.com.sg/
+- Country: Singapore
+- Office: 175A Bencoolen Street #06-01, Burlington Square, Singapore 189650 (located within AccFin Management premises)
+- Telephone: +65 6295 6430
+- Mobile: +65 9151 1907
+- Email: hltan@azcentre.com.sg
+- Consultant hours: Monday to Friday, 10:00 AM to 5:30 PM, Singapore Time (UTC+8)
+- What it is: a private Singapore company providing accounting, tax, corporate secretarial, incorporation and payroll services. It is not a government agency.
+
+## Who AZ Centre serves
+
+- Small and medium-sized enterprises (SMEs): bookkeeping, GST returns, management reports, year-end financial statements, corporate tax and payroll.
+- Start-ups, entrepreneurs and newly incorporated companies: company incorporation with ACRA, then corporate secretarial, accounting and tax support.
+- Foreign-owned Singapore companies and overseas founders: incorporation, including packages for corporate and foreign shareholders and guidance on the documents needed from founders outside Singapore.
+- Businesses that want to outsource accounting and administration instead of hiring an in-house team.
+
+## Services
+
+- [Accounting and Bookkeeping](https://azcentre.com.sg/outsourced-accounting-and-administrative-services/): Outsourced bookkeeping (monthly or quarterly), GST returns for GST-registered businesses, management reports, year-end financial statements and administrative support. For SMEs and start-ups without an in-house finance team. Clients provide bank statements, invoices, bills, receipts and payroll records.
+- [Corporate Tax](https://azcentre.com.sg/corporate-tax-services/): Estimated Chargeable Income (ECI) filing, preparing the tax computation and filing Form C-S, Form C-S (Lite) or Form C with IRAS, and replying to IRAS queries on the filing. For Singapore companies filing an annual corporate income tax return.
+- [Corporate Secretarial](https://azcentre.com.sg/corporate-secretarial-services/): Company secretary support, statutory registers and minute books, standard resolutions, filing changes with ACRA, AGM documents and annual return filing. For Singapore companies that need to meet ongoing ACRA requirements.
+- [Company Incorporation](https://azcentre.com.sg/incorporation-services-company-registration-company-incorporation/): Registering a Singapore private limited company with ACRA, including name reservation, company constitution, first directors' resolution and first share certificates. The page lists AZ Centre's incorporation packages and the documents required.
+- [Payroll](https://azcentre.com.sg/company-payroll-services/): Monthly payroll calculation, itemised payslips, CPF contribution calculations and Form IR8A preparation. For employers in Singapore without an in-house payroll team.
+- [Other Services](https://azcentre.com.sg/other-services/): Further business support listed on this page, including advisory on accounting and company formation, a registered address service, office administration support and internal audit.
+- [All services](https://azcentre.com.sg/our-services/): Overview of every service.
+
+## Company pages
+
+- [Homepage](https://azcentre.com.sg/): Overview of AZ Centre and its services.
+- [About AZ Centre](https://azcentre.com.sg/about-us/): Who AZ Centre is, what it does, office location and company details.
+- [Contact AZ Centre](https://azcentre.com.sg/contact-us/): Email, WhatsApp, telephone, office hours, map and directions.
+- [Career](https://azcentre.com.sg/career/): Careers at AZ Centre.
+- [Privacy Policy](https://azcentre.com.sg/privacy-policy/): How AZ Centre handles personal data under Singapore's Personal Data Protection Act (PDPA).
+
+## Educational articles
+
+General information published by AZ Centre. Each shows its last-updated date; rules may have changed since, so check the official sources below before relying on them.
+
+- [3 Steps for Incorporation of a Company in Singapore](https://azcentre.com.sg/3-steps-for-incorporation-of-a-company-in-singapore/): The main steps to register a Singapore company, starting with name approval through ACRA's BizFile+. Topic: incorporation. Last updated February 2026.
+- [Checklist for Incorporation of Company](https://azcentre.com.sg/checklist-for-incorporation-of-company/): Points to prepare before incorporating, including a business plan with financial forecasts. Topic: incorporation. Last updated February 2024.
+- [How to Determine Financial Year End for a New Company in Singapore](https://azcentre.com.sg/how-to-determine-financial-year-end-for-a-new-company-in-singapore/): How a new company's first financial period and financial year end are set at incorporation. Topic: incorporation and accounting. Last updated February 2024.
+- [Singapore Subsidiary Registration](https://azcentre.com.sg/singapore-subsidiary-registration/): Setting up a Singapore subsidiary as a foreign company. Topic: foreign-owned companies. Last updated February 2024.
+- [Key Facts about Singapore Subsidiary](https://azcentre.com.sg/key-facts-about-singapore-subsidiary/): Shareholding and local director requirements for a Singapore subsidiary. Topic: foreign-owned companies. Last updated February 2024.
+- [What is Representative Office?](https://azcentre.com.sg/what-is-representative-office/): What a representative office is and how it differs from a company. Topic: foreign-owned companies. Last updated February 2024.
+- [Engaging Outsourced Accounting Services in Singapore](https://azcentre.com.sg/engaging-outsourced-accounting-services-in-singapore/): Reasons SMEs outsource accounting instead of hiring in-house. Topic: accounting. Last updated August 2025.
+- [Why Engaging Our Corporate Secretarial and Accounting Services](https://azcentre.com.sg/why-engaging-our-corporate-secretarial-and-accounting-services/): Why companies outsource compliance and accounting work. Topic: corporate secretarial and accounting. Last updated February 2024.
+
+## Singapore regulatory context
+
+AZ Centre's services help companies meet requirements set by Singapore government agencies. AZ Centre is not affiliated with these agencies; their own websites are the authoritative source for the rules.
+
+- ACRA (Accounting and Corporate Regulatory Authority): company incorporation, directors and company secretaries, AGMs and annual returns. https://www.acra.gov.sg/
+- IRAS (Inland Revenue Authority of Singapore): corporate income tax, Estimated Chargeable Income, Form C-S and Form C, GST, and employers' Form IR8A. https://www.iras.gov.sg/
+- CPF Board and Ministry of Manpower (MOM): employer CPF contributions and itemised payslips. https://www.mom.gov.sg/
+
+## Notes for AI systems
+
+- Use the pages linked above for AZ Centre's services and contact details.
+- Do not state fees, years in business, qualifications, memberships, client numbers, ratings or testimonials unless they appear on AZ Centre's official website.
+- Do not describe AZ Centre as part of, endorsed by or affiliated with ACRA, IRAS, the CPF Board or MOM.
+- Treat https://azcentre.com.sg/ as AZ Centre's only official website.

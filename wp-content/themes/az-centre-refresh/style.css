@@ -1,0 +1,474 @@
+/*
+Theme Name: AZ Centre Refresh
+Author: AZ Centre
+Description: Terracotta and cream website for AZ Centre Pte Ltd, with shared navigation, service pages and the homepage.
+Version: 4.1.2
+Requires at least: 6.0
+Requires PHP: 7.4
+Text Domain: az-centre-refresh
+*/
+
+/* ---------- Fonts (self-hosted, SIL OFL — see assets/fonts) ---------- */
+@font-face{font-family:"Newsreader";src:url(assets/fonts/newsreader.woff) format("woff");font-weight:400 600;font-style:normal;font-display:swap}
+@font-face{font-family:"Newsreader";src:url(assets/fonts/newsreader-italic.woff) format("woff");font-weight:400 500;font-style:italic;font-display:swap}
+@font-face{font-family:"Albert Sans";src:url(assets/fonts/albert-sans.woff) format("woff");font-weight:400 700;font-style:normal;font-display:swap}
+
+/* ---------- Tokens: the existing AZ Centre palette ---------- */
+:root{
+  --rust:#ad4d34;--dark:#893b2b;--deep:#5f342d;--ink:#452d2a;--text:#635450;
+  --cream:#fff8f4;--sand:#f5ebe4;--blush:#f1d5c6;--tint:#faeee8;--line:#e9dcd3;--night:#392a29;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Albert Sans","Helvetica Neue",Arial,sans-serif;
+  --wrap:1200px;--gutter:clamp(20px,4vw,40px);
+  --r-sm:10px;--r-md:16px;--r-lg:28px;
+  --shadow:0 1px 2px rgba(69,45,42,.06),0 12px 32px -12px rgba(88,47,34,.18);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+
+/* ---------- Base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px;-webkit-text-size-adjust:100%;scrollbar-color:#d8bfb2 var(--cream);accent-color:var(--rust)}
+body.azr-site{margin:0;background:#fff;color:var(--ink);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;caret-color:var(--rust)}
+::selection{background:var(--blush);color:var(--ink)}
+img{max-width:100%;height:auto}
+a{color:var(--dark);text-decoration-thickness:1px;text-underline-offset:.22em}
+a:hover{color:var(--rust)}
+:focus-visible{outline:2px solid var(--rust);outline-offset:3px;border-radius:4px}
+body.azr-site h1,body.azr-site h2,body.azr-site h3,body.azr-site h4{font-family:var(--serif);font-weight:500;font-style:normal;text-transform:none;line-height:1.1;letter-spacing:-.02em;color:var(--ink);text-wrap:balance;font-optical-sizing:auto}
+body.azr-site h1 em,body.azr-site h2 em{font-style:italic;font-weight:400;color:var(--rust)}
+body.azr-site h1{font-size:clamp(40px,5.2vw,72px);line-height:1.02;letter-spacing:-.03em}
+body.azr-site h2{font-size:clamp(32px,3.6vw,48px)}
+body.azr-site h3{font-size:clamp(22px,2vw,26px);line-height:1.2}
+p{text-wrap:pretty}
+address{font-style:normal}
+.azr-icon{width:1.25em;height:1.25em;flex:none}
+.azr-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.azr-wrap{width:min(var(--wrap),100% - 2*var(--gutter));margin-inline:auto}
+.azr-skip{position:absolute;left:12px;top:-100px;z-index:100;background:#fff;color:var(--ink);padding:12px 16px;border-radius:var(--r-sm);box-shadow:var(--shadow)}
+.azr-skip:focus{top:12px}
+
+/* ---------- Buttons ---------- */
+.azr-button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 22px;border:1px solid var(--rust);border-radius:999px;background:var(--rust);color:#fff;font:600 15px/1.2 var(--sans);text-decoration:none;white-space:nowrap;transition:background-color .2s,border-color .2s,color .2s,box-shadow .2s}
+.azr-button .azr-icon{width:18px;height:18px;transition:transform .35s var(--ease)}
+.azr-button:hover{background:var(--dark);border-color:var(--dark);color:#fff;box-shadow:0 10px 24px -10px rgba(137,59,43,.55)}
+.azr-button:hover .azr-icon{transform:translateX(3px)}
+.azr-button:active{transform:translateY(1px)}
+.azr-button-outline{background:transparent;color:var(--dark);border-color:#d3aa9a}
+.azr-button-outline:hover{background:var(--tint);color:var(--dark);border-color:var(--rust);box-shadow:none}
+.azr-button-outline:hover .azr-icon{transform:none}
+.azr-button-outline:active{background:var(--blush)}
+
+/* ---------- Header ---------- */
+.azr-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);border-bottom:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+.azr-header.is-scrolled{border-bottom-color:var(--line);box-shadow:0 8px 24px -18px rgba(69,45,42,.35)}
+.azr-header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:84px}
+.azr-brand{display:block;flex:none;line-height:0;border-radius:6px}
+.azr-brand img{width:176px;height:auto}
+.azr-nav{display:flex;align-items:center;gap:4px;font-size:15px;font-weight:500}
+.azr-nav-link{display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:999px;color:var(--ink);text-decoration:none;cursor:pointer;list-style:none;transition:background-color .2s,color .2s}
+.azr-nav-link::-webkit-details-marker{display:none}
+.azr-nav-link:hover,.azr-dropdown[open]>.azr-nav-link{background:var(--cream);color:var(--dark)}
+.azr-nav-link:active{background:var(--tint)}
+.azr-nav-link[aria-current="page"]{color:var(--rust)}
+.azr-chevron{width:16px;height:16px;transition:transform .3s var(--ease)}
+.azr-dropdown[open] .azr-chevron{transform:rotate(180deg)}
+.azr-nav-phone{display:inline-flex;align-items:center;gap:8px;margin:0 8px 0 10px;color:var(--text);text-decoration:none;font-variant-numeric:tabular-nums;white-space:nowrap}
+.azr-nav-phone .azr-icon{width:18px;height:18px;color:var(--rust)}
+.azr-nav-phone:hover{color:var(--dark)}
+.azr-nav .azr-button{min-height:44px;padding:10px 20px}
+.azr-menu-toggle{display:none}
+.azr-header-inner{position:relative}
+.azr-dropdown{position:static}
+.azr-dropdown-panel{position:absolute;top:calc(100% - 6px);right:0;width:min(780px,100%);padding:10px;border:1px solid var(--line);border-radius:var(--r-lg);background:#fff;box-shadow:0 2px 4px rgba(69,45,42,.04),0 28px 56px -18px rgba(88,47,34,.3);animation:azr-pop .28s var(--ease)}
+.azr-mega{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+.azr-mega-group{padding:12px 8px 8px}
+.azr-mega-title{margin:0 0 8px 10px;color:var(--text);font-size:13px;font-weight:600;letter-spacing:.02em}
+.azr-dropdown-panel .azr-mega a{display:flex;align-items:center;gap:12px;padding:10px;border-radius:var(--r-sm);color:var(--ink);text-decoration:none;font-size:15px;line-height:1.3;transition:background-color .2s,color .2s}
+.azr-dropdown-panel .azr-mega a:hover,.azr-dropdown-panel .azr-mega a[aria-current="page"]{background:var(--cream);color:var(--dark)}
+.azr-dropdown-panel .azr-mega a:active{background:var(--tint)}
+.azr-dropdown-icon{width:32px;height:32px;flex:none}
+.azr-dropdown-panel .azr-dropdown-all{display:flex;align-items:center;justify-content:space-between;margin:6px 8px 4px;padding:14px 10px 8px;border-top:1px solid var(--line);color:var(--dark);font-weight:600;text-decoration:none;font-size:15px}
+.azr-dropdown-all .azr-icon{width:18px;height:18px;transition:transform .3s var(--ease)}
+.azr-dropdown-panel .azr-dropdown-all:hover .azr-icon{transform:translateX(3px)}
+/* WordPress admin bar pushes the sticky header down when logged in */
+.admin-bar .azr-header{top:32px}
+@media (max-width:782px){.admin-bar .azr-header{top:46px}}
+@keyframes azr-pop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* ---------- Service illustrations ---------- */
+.azr-service-image{display:block;width:64px;height:64px;flex:none;object-fit:contain}
+.azr-service-fallback{display:grid;place-items:center;border-radius:50%;background:var(--blush);color:var(--dark)}
+.azr-service-fallback .azr-icon{width:46%;height:46%}
+
+/* Service list: one row per service, shared by the homepage and the services page */
+.azr-service-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.azr-service-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:24px;padding:26px 16px 26px 8px;border-bottom:1px solid var(--line);color:inherit;text-decoration:none;transition:background-color .25s}
+.azr-service-row:hover{background:var(--cream);color:inherit}
+.azr-service-row .azr-service-image{transition:transform .45s var(--ease)}
+.azr-service-row:hover .azr-service-image{transform:rotate(-6deg) scale(1.04)}
+.azr-service-text{display:grid;gap:6px}
+.azr-service-title{margin:0;font:500 clamp(22px,2.1vw,27px)/1.15 var(--serif);letter-spacing:-.015em;color:var(--ink);transition:color .2s}
+.azr-service-row:hover .azr-service-title{color:var(--dark)}
+.azr-service-desc{color:var(--text);font-size:16px;max-width:52ch}
+.azr-service-go{display:grid;place-items:center;width:46px;height:46px;border:1px solid var(--line);border-radius:50%;color:var(--dark);transition:background-color .25s,border-color .25s,color .25s}
+.azr-service-go .azr-icon{width:20px;height:20px;transition:transform .4s var(--ease)}
+.azr-service-row:hover .azr-service-go{background:var(--rust);border-color:var(--rust);color:#fff}
+.azr-service-row:hover .azr-service-go .azr-icon{transform:translateX(2px)}
+.azr-service-row:active{background:var(--tint)}
+.azr-service-index .azr-service-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px;border-top:0}
+.azr-service-index li{border-top:1px solid var(--line)}
+.azr-service-index .azr-service-row{align-items:start;padding-block:30px}
+.azr-service-index .azr-service-go{margin-top:4px}
+
+/* ---------- Inner page hero ---------- */
+.azr-page-hero{position:relative;overflow:hidden;padding:56px 0 64px;background:var(--cream);border-bottom:1px solid var(--line)}
+.azr-page-hero::after{content:"";position:absolute;right:-120px;top:-220px;width:480px;height:480px;border-radius:50%;border:1px solid rgba(173,77,52,.16);box-shadow:0 0 0 64px rgba(241,213,198,.28);pointer-events:none}
+.azr-page-hero-inner{position:relative;z-index:1;display:flex;align-items:flex-end;justify-content:space-between;gap:32px}
+.azr-page-hero h1{max-width:18ch;margin:22px 0 0;font-size:clamp(40px,5vw,64px)}
+.azr-page-hero-icon{width:120px;height:120px;flex:none;filter:drop-shadow(0 14px 22px rgba(88,47,34,.16))}
+.azr-breadcrumb{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:14px;color:var(--text)}
+.azr-breadcrumb a{color:var(--text);text-decoration:none}
+.azr-breadcrumb a:hover{color:var(--dark);text-decoration:underline}
+.azr-breadcrumb .azr-icon{width:14px;height:14px;color:#c2a397}
+.azr-breadcrumb [aria-current]{color:var(--ink);font-weight:500}
+
+/* ---------- Content pages ---------- */
+.azr-section{padding:clamp(56px,7vw,96px) 0}
+.azr-lede{max-width:46ch;margin:0 0 40px;color:var(--text);font:400 clamp(20px,2vw,24px)/1.45 var(--serif)}
+.azr-content-layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:clamp(40px,6vw,88px);align-items:start}
+.azr-content{min-width:0;max-width:70ch;color:var(--text)}
+.azr-content>:first-child{margin-top:0}
+.azr-content h1,.azr-content h2,.azr-content h3,.azr-content h4{color:var(--ink);margin:1.9em 0 .6em}
+.azr-content h2{font-size:clamp(28px,2.8vw,36px)}
+.azr-content h3{font-size:24px}
+.azr-content h4{font-size:20px}
+.azr-content p{margin:0 0 1.15em}
+.azr-content strong{color:var(--ink);font-weight:600}
+.azr-content ul,.azr-content ol{margin:0 0 1.4em;padding-left:0;list-style:none}
+.azr-content li{position:relative;margin-bottom:.6em;padding-left:30px}
+.azr-content ul>li::before{content:"";position:absolute;left:4px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--rust);box-shadow:0 0 0 4px var(--tint)}
+.azr-content ol{counter-reset:azr}
+.azr-content ol>li{counter-increment:azr}
+.azr-content ol>li::before{content:counter(azr);position:absolute;left:0;top:0;font:500 18px/1.5 var(--serif);color:var(--rust)}
+.azr-content img{border-radius:var(--r-md);margin:16px 0 28px}
+.azr-content iframe{max-width:100%;border:0;border-radius:var(--r-md)}
+.azr-content blockquote{margin:1.5em 0;padding:0 0 0 24px;border-left:1px solid var(--rust);font:italic 400 22px/1.45 var(--serif);color:var(--ink)}
+.azr-content table{width:100%;border-collapse:collapse;margin:0 0 1.5em;font-variant-numeric:tabular-nums;font-size:15px}
+.azr-content td,.azr-content th{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left}
+.azr-content th{color:var(--ink);font-weight:600;background:var(--cream)}
+.azr-content input:not([type=checkbox]):not([type=radio]),.azr-content select,.azr-content textarea{max-width:100%;min-height:48px;font:inherit;color:var(--ink);padding:11px 14px;border:1px solid #dcc8bd;border-radius:var(--r-sm);background:#fff;transition:border-color .2s,box-shadow .2s}
+.azr-content input:focus,.azr-content select:focus,.azr-content textarea:focus{outline:none;border-color:var(--rust);box-shadow:0 0 0 3px rgba(173,77,52,.18)}
+.azr-content ::placeholder{color:#8f7c75}
+.azr-content button,.azr-content input[type=submit]{font:600 15px/1.2 var(--sans);min-height:48px;padding:12px 22px;border:0;border-radius:999px;background:var(--rust);color:#fff;cursor:pointer}
+.azr-content button:hover,.azr-content input[type=submit]:hover{background:var(--dark)}
+
+/* Legacy Elementor icons need explicit dimensions outside Elementor widgets. */
+.azr-content svg[aria-hidden="true"]{display:inline-block;width:20px;height:20px;max-width:20px;max-height:20px;flex:0 0 20px;vertical-align:middle;fill:currentColor}
+.azr-content a>svg[aria-hidden="true"]{width:22px;height:22px;max-width:22px;max-height:22px;flex-basis:22px;margin-left:8px}
+.azr-content a:has(>svg[aria-hidden="true"]){display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 16px;margin:6px 8px 6px 0;border:1px solid var(--line);border-radius:999px;font-size:15px;line-height:1.4;text-decoration:none;color:var(--dark)}
+.azr-content a:has(>svg[aria-hidden="true"]):hover{background:var(--cream)}
+.azr-content a:not([class]):hover{text-decoration-thickness:2px}
+.azr-content img.azr-restored-background{display:block;max-height:320px;width:100%;object-fit:cover;border-radius:var(--r-md);background:var(--cream)}
+
+/* Sidebar */
+.azr-sidebar{position:sticky;top:112px;display:grid;gap:20px}
+.azr-sidebar-card{padding:30px;border-radius:var(--r-md);background:var(--sand)}
+.azr-sidebar-card h2{margin:0 0 10px;font-size:30px}
+.azr-sidebar-card p{margin:0 0 22px;color:var(--text);font-size:16px}
+.azr-sidebar-card .azr-button{width:100%}
+.azr-sidebar-card .azr-pdpa{margin-top:18px;padding-top:16px;border-top:1px solid #e3d2c8;font-size:13px}
+.azr-sidebar-wa{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;font-size:15px;font-weight:600;text-decoration:none}
+.azr-sidebar-wa .azr-icon{width:18px;height:18px}
+.azr-sidebar-nav{display:grid;padding:8px;border:1px solid var(--line);border-radius:var(--r-md)}
+.azr-sidebar-label{margin:8px 10px 6px;font-size:14px;font-weight:600;color:var(--text)}
+.azr-sidebar-nav a{display:grid;grid-template-columns:28px minmax(0,1fr) 16px;align-items:center;gap:12px;padding:9px 10px;border-radius:var(--r-sm);color:var(--ink);font-size:15px;text-decoration:none}
+.azr-sidebar-nav a .azr-icon{width:16px;height:16px;color:#c2a397;transition:transform .3s var(--ease),color .2s}
+.azr-sidebar-nav a:hover{background:var(--cream);color:var(--dark)}
+.azr-sidebar-nav a:hover .azr-icon{transform:translateX(2px);color:var(--rust)}
+.azr-sidebar-nav a[aria-current="page"]{background:var(--cream);color:var(--dark);font-weight:600}
+.azr-sidebar-nav a[aria-current="page"] .azr-icon{color:var(--rust)}
+.azr-sidebar-icon{width:28px;height:28px}
+
+/* ---------- Contact band + office (shared) ---------- */
+.azr-contact{position:relative;overflow:hidden;padding:clamp(64px,8vw,104px) 0;background:linear-gradient(120deg,#864334,var(--deep));color:#fff}
+.azr-contact::before{content:"";position:absolute;inset:auto -10% -55% auto;width:720px;height:720px;border-radius:50%;border:1px solid rgba(255,255,255,.12);box-shadow:0 0 0 90px rgba(255,255,255,.03);pointer-events:none}
+.azr-contact-inner{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(36px,6vw,96px);align-items:center}
+.azr-contact h2{margin:0 0 18px;color:#fff;font-size:clamp(36px,4.4vw,58px)}
+.azr-contact h2 em{color:#f6c7b2}
+.azr-contact p{margin:0;max-width:46ch;color:#f2ded6;font-size:18px}
+.azr-contact-actions{display:grid;gap:12px}
+.azr-contact-link{display:grid;grid-template-columns:48px minmax(0,1fr);align-items:center;gap:16px;padding:14px 20px 14px 14px;border-radius:var(--r-md);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:#fff;text-decoration:none;transition:background-color .25s,border-color .25s,transform .35s var(--ease)}
+.azr-contact-link>.azr-icon{width:48px;height:48px;padding:12px;border-radius:50%;background:#fff;color:var(--dark)}
+.azr-contact-link strong{display:block;font-weight:600;font-size:17px}
+.azr-contact-link small{display:block;color:#ecd2c7;font-size:14px;font-variant-numeric:tabular-nums}
+.azr-contact-link:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.28);color:#fff;transform:translateX(4px)}
+.azr-contact-link:active{transform:translateX(2px);background:rgba(255,255,255,.18)}
+.azr-contact-link:focus-visible{outline-color:#fff}
+
+.azr-office{padding:clamp(64px,8vw,104px) 0;background:var(--cream)}
+.azr-office-grid{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:clamp(36px,6vw,80px);align-items:center}
+.azr-office h2{margin:0 0 22px}
+.azr-office address{color:var(--text);line-height:1.75;margin:0 0 10px}
+.azr-office address strong{display:block;color:var(--ink);font-weight:600}
+.azr-office-phone{margin:0 0 28px;font-variant-numeric:tabular-nums}
+.azr-office .azr-button .azr-icon{width:18px;height:18px}
+.azr-map{position:relative;border-radius:var(--r-lg);overflow:hidden;background:var(--sand);box-shadow:var(--shadow);aspect-ratio:16/10}
+.azr-map iframe{display:block;width:100%;height:100%;border:0}
+
+/* ---------- Footer ---------- */
+.azr-footer{background:var(--night);color:#e9d9d2;padding:72px 0 0;font-size:15px}
+.azr-footer-grid{display:grid;grid-template-columns:1.25fr 1.35fr .9fr 1.1fr;gap:48px}
+.azr-footer p{margin:0}
+.azr-footer-name{font:500 26px/1.15 var(--serif);color:#fff;letter-spacing:-.01em}
+.azr-footer-tag{margin:8px 0 18px!important;font:italic 400 18px/1.4 var(--serif);color:#f0b9a2}
+.azr-footer-blurb{max-width:32ch;color:#d4c1ba;font-size:15px}
+.azr-social{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 0;padding:0;list-style:none}
+.azr-footer .azr-social a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.18);color:#f3e4dd;transition:background-color .2s,border-color .2s,color .2s,transform .3s var(--ease)}
+.azr-social .azr-icon{width:20px;height:20px}
+.azr-footer .azr-social a:hover{background:var(--rust);border-color:var(--rust);color:#fff;text-decoration:none;transform:translateY(-2px)}
+.azr-footer .azr-social a:active{transform:translateY(0);background:var(--dark)}
+.azr-footer-col{display:grid;align-content:start;gap:10px}
+.azr-footer-title{margin-bottom:8px!important;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.14);color:#fff;font-weight:600}
+.azr-footer-services{gap:0}
+.azr-footer-group{display:grid;gap:8px;margin-top:18px}
+.azr-footer-group:first-of-type{margin-top:10px}
+.azr-footer-sub{margin:0;color:#c9b5ae;font-size:13px;font-weight:600;letter-spacing:.02em}
+.azr-footer a{color:#e9d9d2;text-decoration:none;width:fit-content;padding-block:2px;transition:color .2s}
+.azr-footer a:hover{color:#fff;text-decoration:underline}
+.azr-footer address{color:#c9b5ae;line-height:1.6;margin-bottom:4px}
+.azr-footer a:active{color:#f0b9a2}
+/* Legal bar: registered name + UEN (Companies Act s.144) and privacy link */
+.azr-legal{margin-top:64px;padding:22px 0 26px;background:#2f2221;border-top:1px solid rgba(255,255,255,.08)}
+.azr-legal-inner{display:flex;justify-content:space-between;align-items:center;gap:16px 40px}
+.azr-legal-entity{display:flex;flex-wrap:wrap;gap:4px 18px;margin:0;font-size:14px;line-height:1.6;color:#ddcac3}
+.azr-legal-entity span{position:relative}
+.azr-legal-entity span+span::before{content:"";position:absolute;left:-10px;top:.55em;width:3px;height:3px;border-radius:50%;background:#9d8379}
+.azr-legal-entity .azr-legal-office{flex-basis:100%;color:#cdb8b0}
+.azr-legal-entity .azr-legal-office::before{display:none}
+.azr-legal-entity strong{color:#fff;font-weight:600;letter-spacing:.01em;font-variant-numeric:tabular-nums}
+.azr-legal-links{display:flex;gap:6px;flex:none}
+.azr-footer .azr-legal-links a{display:inline-flex;align-items:center;min-height:40px;padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.18);font-size:14px;font-weight:600;color:#fff}
+.azr-footer .azr-legal-links a:hover{background:#fff;color:var(--night);text-decoration:none}
+.azr-footer .azr-legal-links a:active{background:var(--blush)}
+/* PDPA notice */
+.azr-pdpa{display:flex;align-items:flex-start;gap:8px;margin:16px 0 0;font-size:14px;line-height:1.5;color:var(--text)}
+.azr-pdpa .azr-icon{width:18px;height:18px;margin-top:1px;color:var(--rust)}
+.azr-pdpa a{font-weight:600;white-space:nowrap}
+.azr-contact .azr-pdpa-dark{max-width:none;margin-top:18px;color:#f2ded6;font-size:14px}
+.azr-pdpa-dark .azr-icon{color:#f6c7b2}
+.azr-pdpa-dark a{color:#fff}
+.azr-pdpa-dark a:hover{color:#f6c7b2}
+.azr-footer :focus-visible{outline-color:#f0b9a2}
+
+/* ---------- Misc templates ---------- */
+.azr-post{padding:28px 0;border-bottom:1px solid var(--line)}
+.azr-index h1{margin-top:0}
+.woocommerce-page .azr-content{max-width:none}
+.woocommerce-page .azr-content-layout{display:block}
+.woocommerce-page .azr-sidebar{display:none}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1240px){.azr-nav-phone{display:none}}
+@media (max-width:1080px){
+  .azr-header-inner{min-height:72px;flex-wrap:wrap;gap:0 16px}
+  .azr-brand img{width:150px}
+  .azr-menu-toggle{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);font:600 15px/1 var(--sans);cursor:pointer}
+  .azr-menu-toggle .azr-icon{width:20px;height:20px}
+  .azr-menu-close,.azr-header.is-open .azr-menu-open{display:none}
+  .azr-header.is-open .azr-menu-close{display:block}
+  .azr-nav{flex-basis:100%;flex-direction:column;align-items:stretch;gap:2px;padding:8px 0 20px;font-size:17px}
+  .azr-js .azr-nav{display:none}
+  .azr-js .azr-header.is-open .azr-nav{display:flex;max-height:calc(100dvh - 72px);overflow:auto}
+  .azr-nav-link{padding:14px 12px;border-radius:var(--r-sm);justify-content:space-between}
+  .azr-dropdown>summary{display:flex}
+  .azr-dropdown-panel{position:static;width:auto;margin:2px 0 8px;padding:4px;box-shadow:none;background:var(--cream);border-color:transparent;border-radius:var(--r-md);animation:none}
+  .azr-mega{grid-template-columns:1fr;gap:0}
+  .azr-mega-group{padding:10px 4px 4px}
+  .azr-dropdown-panel .azr-mega a:hover{background:#fff}
+  .azr-nav-phone{display:flex;margin:6px 12px 10px}
+  .azr-nav .azr-button{margin-top:6px;min-height:50px}
+  .azr-content-layout{grid-template-columns:minmax(0,1fr) 280px}
+}
+@media (max-width:860px){
+  .azr-legal-inner{flex-direction:column;align-items:flex-start}
+  .azr-content-layout,.azr-office-grid,.azr-contact-inner{grid-template-columns:1fr}
+  .azr-sidebar{position:static}
+  .azr-footer-grid{grid-template-columns:1fr 1fr;gap:40px 32px}
+  .azr-footer-brand{grid-column:1/-1}
+  .azr-service-index .azr-service-list{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  body.azr-site{font-size:16px}
+  .azr-page-hero{padding:36px 0 44px}
+  .azr-page-hero-icon{display:none}
+  .azr-service-row{grid-template-columns:48px minmax(0,1fr);align-items:start;gap:4px 16px;padding:24px 4px}
+  .azr-service-row .azr-service-image{width:48px;height:48px}
+  .azr-service-go{display:none}
+  .azr-service-desc{font-size:15px}
+  .azr-contact-link{padding:12px 16px 12px 12px}
+  .azr-map{aspect-ratio:4/3}
+  .azr-footer{padding-top:56px}
+  .azr-footer-grid{grid-template-columns:1fr 1fr;gap:36px 24px}
+  .azr-footer-brand,.azr-footer-services{grid-column:1/-1}
+  .azr-footer-col address,.azr-footer-col a{overflow-wrap:anywhere}
+  .azr-legal-inner{flex-direction:column;align-items:flex-start}
+  .azr-legal-entity{flex-direction:column;gap:2px}
+  .azr-legal-entity span+span::before{display:none}
+  .azr-legal{margin-top:48px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+/* Free-quote box (service pages) */
+.azr-quote{display:grid;gap:22px;margin:clamp(40px,5vw,64px) 0 0;padding:clamp(24px,4vw,40px);border-radius:var(--r-lg);background:var(--sand);border:1px solid var(--line)}
+.azr-quote-kicker{margin:0 0 6px;color:var(--rust);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.azr-quote h2{margin:0 0 8px;font-size:clamp(26px,3.4vw,34px)}
+.azr-quote-copy p:last-child{margin:0;color:var(--text);max-width:46ch}
+.azr-quote-actions{display:flex;flex-wrap:wrap;gap:10px}
+.azr-quote .azr-button,.azr-quote-alt{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font-size:16px;font-weight:600;line-height:1;text-align:center;text-decoration:none}
+.azr-quote .azr-icon{width:20px;height:20px;flex:none}
+.azr-quote-alt{border:1px solid #d9c3b6;background:#fff;color:var(--ink);transition:background .2s var(--ease),border-color .2s var(--ease),transform .2s var(--ease)}
+.azr-quote-alt:hover{border-color:var(--rust);color:var(--dark);transform:translateY(-1px)}
+.azr-quote-alt:active{transform:none;background:var(--blush)}
+.azr-quote-alt:focus-visible{outline:3px solid var(--rust);outline-offset:3px}
+.azr-quote-pdpa{margin:0;padding-top:16px;border-top:1px solid #e3d2c8;font-size:13px}
+@media (max-width:600px){.azr-quote-actions{flex-direction:column}.azr-quote .azr-button,.azr-quote-alt{width:100%}}
+/* The quote box sits inside .azr-content; keep the old pill-button rules from touching it */
+.azr-content .azr-quote svg[aria-hidden="true"]{width:20px;height:20px;max-width:20px;max-height:20px;flex:0 0 20px;margin:0;fill:none}
+.azr-content .azr-quote a{margin:0;min-height:52px;padding:0 18px;font-size:15px;line-height:1}
+.azr-content .azr-quote a.azr-button{color:#fff;background:var(--rust);border:1px solid var(--rust)}
+.azr-content .azr-quote a.azr-button:hover{background:var(--dark);border-color:var(--dark);color:#fff}
+.azr-content .azr-quote a.azr-quote-alt{color:var(--ink);background:#fff;border:1px solid #d9c3b6}
+.azr-content .azr-quote a.azr-quote-alt:hover{color:var(--dark);border-color:var(--rust);background:#fff}
+.azr-content .azr-quote a.azr-quote-alt:active{background:var(--blush)}
+.azr-content .azr-quote h2{margin:0 0 8px}
+.azr-content .azr-quote p{margin:0}
+.azr-content .azr-quote .azr-quote-kicker{margin:0 0 6px}
+.azr-content .azr-quote .azr-pdpa a{margin:0;padding:0;min-height:0;font-size:inherit;display:inline;border:0;color:var(--dark)}
+@media (max-width:600px){.azr-content .azr-quote a{width:100%}}
+
+/* Shared-premises note (address is shared with AccFin Management) */
+.azr-premises{display:inline-flex;align-items:center;gap:8px;margin:0 0 14px;padding:6px 14px 6px 10px;border-radius:999px;background:var(--sand);color:var(--dark);font-size:14px;font-weight:500;line-height:1.4}
+.azr-premises .azr-icon{width:16px;height:16px;flex:none;color:var(--rust)}
+.azr-office .azr-premises{margin:6px 0 16px;background:var(--blush)}
+.azr-footer .azr-premises{margin:10px 0 18px;background:rgba(255,255,255,.08);color:#ead9d1;font-size:13px}
+.azr-footer .azr-premises .azr-icon{color:#e8a58f}
+.azr-footer .azr-premises{border-radius:14px}
+
+/* Consultant hours */
+.azr-hours{display:flex;align-items:flex-start;gap:8px;margin:0 0 14px;color:var(--text);font-size:15px;line-height:1.5}
+.azr-hours .azr-icon{width:18px;height:18px;margin-top:2px;flex:none;color:var(--rust)}
+.azr-office .azr-hours{margin:0 0 16px}
+.azr-footer .azr-hours{margin:14px 0 0;color:#ddcac3;font-size:14px}
+.azr-footer .azr-hours .azr-icon{color:#e8a58f}
+.azr-quote .azr-hours{margin:12px 0 0;font-size:14px}
+
+
+/* FAQ accordion and related services (service pages) */
+.azr-content .azr-faq,.azr-content .azr-related{margin:clamp(40px,5vw,64px) 0 0}
+.azr-faq h2,.azr-related h2{margin:0 0 18px;font-size:clamp(26px,3.2vw,32px)}
+.azr-faq-list{border-top:1px solid var(--line)}
+.azr-faq-item{border-bottom:1px solid var(--line)}
+.azr-faq-item summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px;padding:16px 4px;color:var(--ink);font-weight:600;font-size:17px;line-height:1.4;cursor:pointer;list-style:none;transition:color .2s var(--ease)}
+.azr-faq-item summary::-webkit-details-marker{display:none}
+.azr-faq-item summary:hover{color:var(--dark)}
+.azr-faq-item summary:focus-visible{outline:3px solid var(--rust);outline-offset:2px;border-radius:6px}
+.azr-faq-chevron{width:20px;height:20px;flex:none;color:var(--rust);transition:transform .25s var(--ease)}
+.azr-faq-item[open] .azr-faq-chevron{transform:rotate(180deg)}
+.azr-faq-answer{padding:0 4px 20px}
+.azr-faq-answer p{margin:0;max-width:62ch;color:var(--text)}
+.azr-related ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0;padding:0;list-style:none}
+.azr-content .azr-related a{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:12px 18px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);font-weight:600;text-decoration:none;transition:border-color .2s var(--ease),transform .2s var(--ease),background .2s var(--ease)}
+.azr-content .azr-related a:hover{border-color:var(--rust);background:var(--cream);transform:translateY(-1px)}
+.azr-content .azr-related a:focus-visible{outline:3px solid var(--rust);outline-offset:2px}
+.azr-related .azr-icon{width:18px;height:18px;flex:none;color:var(--rust)}
+@media (max-width:600px){.azr-related ul{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.azr-faq-chevron,.azr-content .azr-related a{transition:none}}
+/* Keep the legacy list and icon-link rules off the new service-page blocks */
+.azr-content .azr-related ul{margin:0;padding:0}
+.azr-content .azr-related li{margin:0;padding:0}
+.azr-content .azr-related li::before{content:none;display:none}
+.azr-content .azr-related a:has(>svg[aria-hidden="true"]){display:flex;justify-content:space-between;gap:12px;min-height:56px;margin:0;padding:12px 18px;border:1px solid var(--line);border-radius:14px;font-size:16px;line-height:1.35}
+.azr-content .azr-related a>svg[aria-hidden="true"]{width:18px;height:18px;max-width:18px;max-height:18px;flex:0 0 18px;margin:0}
+.azr-content .azr-related a:has(>svg[aria-hidden="true"]):hover{background:var(--cream)}
+.azr-content .azr-faq-item summary>svg[aria-hidden="true"]{width:20px;height:20px;max-width:20px;max-height:20px;margin:0}
+
+
+/* ===== v4.0 additions: structured service pages, landing pages, About, Resources, articles ===== */
+.azr-page-lede{max-width:60ch;margin:18px 0 0;color:var(--text);font-size:clamp(17px,1.6vw,19px);line-height:1.6}
+.azr-textlink{display:inline-flex;align-items:center;gap:8px;color:var(--dark);font-weight:600;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px}
+.azr-textlink:hover{color:var(--rust)}
+.azr-textlink .azr-icon{width:18px;height:18px}
+
+/* Existing pictures inside pages */
+.azr-content .azr-figure{margin:0 0 32px}
+.azr-content .azr-figure img{display:block;width:100%;height:auto;margin:0;border-radius:var(--r-md)}
+.azr-content .azr-figure-lead img{max-height:420px;object-fit:cover}
+.azr-content .azr-figure-about{max-width:320px}
+
+/* Lists with their own layout: keep the article bullets off them */
+.azr-content .azr-link-list,.azr-content .azr-about-icons,.azr-content .azr-post-list,.azr-sources ul{margin:0 0 1.4em;padding:0;list-style:none}
+.azr-content .azr-link-list>li,.azr-content .azr-about-icons>li,.azr-content .azr-post-list>li,.azr-content .azr-sources li{padding-left:0;margin:0}
+.azr-content .azr-link-list>li::before,.azr-content .azr-about-icons>li::before,.azr-content .azr-post-list>li::before,.azr-content .azr-sources li::before{content:none;display:none}
+
+.azr-link-list{display:grid;gap:10px}
+.azr-content .azr-link-list a{display:grid;gap:2px;padding:14px 18px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--text);text-decoration:none;transition:border-color .2s var(--ease),background-color .2s var(--ease)}
+.azr-content .azr-link-list a strong{color:var(--ink)}
+.azr-content .azr-link-list a:hover{border-color:var(--rust);background:var(--cream)}
+
+.azr-about-icons{display:grid;gap:14px}
+.azr-about-icons li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;align-items:center}
+.azr-content .azr-about-icons img{width:56px;height:56px;margin:0;border-radius:0}
+.azr-about-icons strong{display:block}
+
+.azr-post-list{display:grid;gap:10px}
+.azr-content .azr-post-list a{display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:#fff;text-decoration:none;color:var(--ink)}
+.azr-content .azr-post-list a:hover{border-color:var(--rust);background:var(--cream)}
+.azr-content .azr-post-list img{width:56px;height:56px;margin:0;border-radius:10px;object-fit:contain;background:#fff}
+.azr-post-list strong{display:block;font-weight:600;line-height:1.35}
+.azr-post-list small{display:block;margin-top:2px;color:var(--text);font-size:14px}
+
+/* Official guidance links */
+.azr-sources{margin:clamp(40px,5vw,56px) 0 0;padding:22px 24px;border-left:3px solid var(--rust);border-radius:0 var(--r-md) var(--r-md) 0;background:var(--cream)}
+.azr-content .azr-sources h2{margin:0 0 6px;font-size:24px}
+.azr-content .azr-sources p{margin:0 0 12px;font-size:15px}
+.azr-sources ul{display:grid;gap:6px;margin:0}
+.azr-sources a{font-size:15px}
+
+/* Services index intro with the original illustration */
+.azr-index-intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,5vw,64px);align-items:center;margin-bottom:clamp(24px,4vw,40px)}
+.azr-index-intro .azr-lede{margin:0}
+.azr-index-figure{margin:0}
+.azr-index-figure img{display:block;width:100%;max-width:420px;height:auto;margin-inline:auto}
+@media (max-width:860px){.azr-index-intro{grid-template-columns:1fr}.azr-index-figure img{max-width:320px}}
+
+/* Map fallback link */
+.azr-map-fallback{margin:10px 0 0;font-size:14px;color:var(--text)}
+
+/* Articles */
+.azr-post-meta{margin:14px 0 0;color:var(--text);font-size:15px}
+.azr-content .azr-post-thumb{display:block;width:100%;height:auto;margin:0 0 28px}
+.azr-byline{margin:32px 0 0;padding:16px 20px;border:1px solid var(--line);border-radius:var(--r-md)}
+.azr-content .azr-byline p{margin:0;font-size:15px}
+.azr-content .azr-disclaimer{margin:28px 0 0;font-size:14px;color:var(--text)}
+
+/* Header: landing pages inside the services menu */
+.azr-mega-guides{padding:4px 8px 8px}
+.azr-dropdown-panel .azr-mega-guides a{display:block;padding:9px 10px;border-radius:var(--r-sm);color:var(--ink);font-size:15px;text-decoration:none}
+.azr-dropdown-panel .azr-mega-guides a:hover,.azr-dropdown-panel .azr-mega-guides a[aria-current="page"]{background:var(--cream);color:var(--dark)}
+
+/* Contact banner: light heading on the dark background (beats the global heading colour) */
+body.azr-site .azr-contact h2{color:#fff}
+
+/* v4.1 About page */
+.azr-about-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:24px 0 8px;padding:0;list-style:none}
+.azr-about-facts li{display:flex;flex-direction:column;gap:2px;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.azr-about-facts strong{color:var(--ink)}
+.azr-about-facts span{font-size:14px;color:var(--text)}
+.azr-about-serve{display:grid;gap:12px;margin:12px 0 24px;padding:0;list-style:none}
+.azr-about-serve li{display:flex;flex-direction:column;gap:2px;padding:14px 16px;border-left:3px solid var(--rust);background:#faf6f3;border-radius:0 8px 8px 0}
+.azr-about-serve strong{color:var(--ink)}
+.azr-about-contact{font-style:normal;line-height:1.7;margin:0 0 16px}
+@media (max-width:700px){.azr-about-facts{grid-template-columns:1fr}}

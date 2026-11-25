@@ -1,0 +1,158 @@
+{
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/aboutus-incorporation-services/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/",
+      "destination": "/our-services/",
+      "statusCode": 301
+    },
+    {
+      "source": "/home/incorporation-services/",
+      "destination": "/incorporation-services-company-registration-company-incorporation/",
+      "statusCode": 301
+    },
+    {
+      "source": "/home/corporate-secretarial-services/",
+      "destination": "/corporate-secretarial-services/",
+      "statusCode": 301
+    },
+    {
+      "source": "/llms-txt/",
+      "destination": "/llms.txt",
+      "statusCode": 301
+    },
+    {
+      "source": "/basic-package-s-450/",
+      "destination": "/contact-us/",
+      "statusCode": 301
+    },
+    {
+      "source": "/cart/",
+      "destination": "/contact-us/",
+      "statusCode": 301
+    },
+    {
+      "source": "/checkout/",
+      "destination": "/contact-us/",
+      "statusCode": 301
+    },
+    {
+      "source": "/shop/checkout/",
+      "destination": "/contact-us/",
+      "statusCode": 301
+    },
+    {
+      "source": "/shop/",
+      "destination": "/contact-us/",
+      "statusCode": 301
+    },
+    {
+      "source": "/my-account/",
+      "destination": "/contact-us/",
+      "statusCode": 301
+    },
+    {
+      "source": "/pricing/",
+      "destination": "/contact-us/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/:slug*",
+      "destination": "/post/",
+      "statusCode": 301
+    },
+    {
+      "source": "/author/:slug*",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/feed/",
+      "destination": "/post/",
+      "statusCode": 301
+    },
+    {
+      "source": "/sitemap_index.xml",
+      "destination": "/sitemap.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/page-sitemap.xml",
+      "destination": "/sitemap.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/post-sitemap.xml",
+      "destination": "/sitemap.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/category-sitemap.xml",
+      "destination": "/sitemap.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/addl-sitemap.xml",
+      "destination": "/sitemap.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/elementor-hf-sitemap.xml",
+      "destination": "/sitemap.xml",
+      "statusCode": 301
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    },
+    {
+      "source": "/wp-content/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?<sub>.*)\\.vercel\\.app"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
+  ]
+}
